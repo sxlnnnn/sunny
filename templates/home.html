@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block page-container %}
+         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Dashboard</h1>
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-responsive" alt="Generic placeholder thumbnail" height="200" width="200">
+              <h4>node1</h4>
+              <span class="text-muted">CPU</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-responsive" alt="Generic placeholder thumbnail" height="200" width="200">
+              <h4>node1</h4>
+              <span class="text-muted">Memory</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-responsive" alt="Generic placeholder thumbnail" height="200" width="200">
+              <h4>node2</h4>
+              <span class="text-muted">CPU</span>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" class="img-responsive" alt="Generic placeholder thumbnail" height="200" width="200">
+              <h4>node2</h4>
+              <span class="text-muted">Memory</span>
+            </div>
+          </div>
+
+          <h2 class="sub-header">容器管理</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>容器序号</th>
+                  <th>容器ID</th>
+                  <th>容器IP</th>
+                  <th>节点IP</th>
+                  <th>用户</th>
+                  <th>应用</th>
+                  <th>描述</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for con_obj in con_objs %}
+                <tr>
+                  <td>{{ con_obj.id }}</td>
+                  <td>{{ con_obj.con_id }}</td>
+                  <td>{{ con_obj.con_ip }}</td>
+                  <td>{{ con_obj.node_ip }}</td>
+                  <td>{{ con_obj.user_name }}</td>
+                  <td>{{ con_obj.con_app }}</td>
+                  <td>{{ con_obj.con_desc }}</td>
+                </tr>
+                {% end %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+{% end %}

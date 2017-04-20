@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block page-container %}
+         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h2 class="sub-header">节点管理</h2>
+          <input type="button" class="btn btn-default" onclick="javascript:window.location.href='/nodeadd'" value="添加节点">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>序号</th>
+                  <th>节点名</th>
+                  <th>节点IP</th>
+                  <th>监听端口</th>
+                  <th>CPU核数</th>
+                  <th>内存</th>
+                  <th>镜像数</th>
+                  <th>状态</th>
+                  <th>节点属组</th>
+                  <th>容器数</th>
+                  <th>系统版本</th>
+                  <th>内核版本</th>
+                  <th>Docker版本</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for node_obj in node_objs %}
+                <tr>
+                  <td>{{ node_obj.id }}</td>
+                  <td>{{ node_obj.name }}</td>
+                  <td>{{ node_obj.node_ip }}</td>
+                  <td>{{ node_obj.port }}</td>
+                  <td>{{ node_obj.cpus }}</td>
+                  <td>{{ node_obj.mem }}</td>
+                  <td>{{ node_obj.images }}</td>
+                  <td>{{ node_obj.state }}</td>
+                  <td>{{ node_obj.node_group }}</td>
+                  <td>{{ node_obj.containers }}</td>
+                  <td>{{ node_obj.os_version }}</td>
+                  <td>{{ node_obj.kernel_version }}</td>
+                  <td>{{ node_obj.docker_version }}</td>
+                  <td><a href="/nodemodify?action=modify&node_id={{ node_obj.id }}" ><img src='static/images/modify.png' alt='修改' title='修改' /><a onClick="return confirm('注意：确定要删除此条目吗？')" href="/nodedel?action=delete&node_id={{ node_obj.id }}"><img src='/static/images/remove.png' alt='删除' title='删除' /></a></td>
+                </tr>
+                {% end %}
+              </tbody>
+            </table>
+          </div>
+         </div>
+{% end %}
